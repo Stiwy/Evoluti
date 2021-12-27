@@ -1,0 +1,22 @@
+{% set uri = app.request.requestUri %}
+
+<div>
+    <div>
+        <h2 class="text-center text-3xl text-blue-500 font-bold tracking-wider">Evoluti</h2>
+    </div>
+
+    <nav class="mt-20">
+        <ul>
+            <li>
+                <a href="{{ path('app_customer') }}" class="w-full block {% if uri == "/clients" %}nav-activ{% endif %}">
+                    <i class="fas fa-users"></i> Clients
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="grid grid-cols-2 gap-4 absolute bottom-2 text-gray-400">
+        <a class="hover:text-blue-500" href="">Mon compte</a>
+        <a class="hover:text-blue-500" href="">Déconnexion</a>
+    </div>
+</div>
