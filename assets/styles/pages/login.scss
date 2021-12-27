@@ -1,0 +1,25 @@
+.body-login-page {
+  background-image: url("https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg");
+  background-size: cover;
+}
+
+.background-filter {
+  background-color: rgba(40, 40, 40, 0.7);
+  min-height: 50%;
+  width: 60%;
+  position: absolute;
+  top: 25%;
+  right: 20%;
+  border-radius: 15px;
+}
+
+.login-block {
+  position: absolute;
+  z-index: 10;
+  width: 30%;
+  top: 20%;
+  left: 48%;
+  height: 60%;
+  border-radius: 15px;
+  background-color: white;
+}

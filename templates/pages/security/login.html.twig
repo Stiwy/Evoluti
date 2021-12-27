@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+
+    <div class="background-filter">
+        <div class="w-2/4 py-10 px-8">
+            <h1 class="text-gray-300 font-bold text-4xl text-center tracking-wider mt-10">Evoluti</h1>
+            <br>
+            <p class="text-gray-400 text-md tracking-wider leading-7r mt-5">
+                Outils de gestion de missions, de clientèle, de comptabilité et d'emplois du temps pour les indépendant.
+            </p>
+
+            <a href="" class="text-gray-400 text-center block mt-28 text-sm tracking-wider leading-7r mt-5"><em>S'abonner</em></a>
+        </div>
+    </div>
+
+    <form method="post" class="login-block p-10">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <h2 class="text-2xl text-blue-500 my-5 tracking-wider uppercase">Connexion</h2>
+
+        <div>
+            <input type="email" placeholder="Adresse e-mail" value="{{ last_username }}" name="email" id="inputEmail" class="outline-none border-b-2 border-gray-300 w-full py-1 text-md rounded mt-5" autocomplete="email" required autofocus>
+        </div>
+
+        <div class="mt-5">
+            <input type="password" placeholder="Mot de passe" name="password" id="inputPassword" class="outline-none border-b-2 border-gray-300 w-full py-1 text-md rounded mt-5" autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"/>
+
+        <div class="mt-10">
+            <label class="text-gray-400">
+                <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
+            </label>
+        </div>
+
+        <button class="border-2 border-blue-500 text-blue-500 w-full mt-10 py-2 shadow-md rounded hover:bg-blue-500 hover:text-white" type="submit">
+            Se connecter
+        </button>
+
+        <p class="mt-10 text-sm text-gray-400">Vous pouvez réinitialiser votre mot de passe <a href="" class="underline">ici</a></p>
+    </form>
+
+<div class="hidden w-2/5 mx-auto px-4 py-8 shadow-md rounded-md mt-5 text-gray-500 border border-gray-200">
+    <form method="post" class="w-2/3 mx-auto">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <h2 class="text-2xl text-gray-400 mb-5 font-bold text-center ">Se connecter</h2>
+
+    <div class="form_group">
+        <label for="inputEmail" class="block text-md font-bold">E-mail</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="border-2 border-gray-200 w-full py-1 text-md rounded" autocomplete="email" required autofocus>
+    </div>
+
+    <div class="form_group mt-5">
+        <label for="inputPassword" class="block text-md font-bold">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="border-2 border-gray-200 w-full py-1 text-md rounded" autocomplete="current-password" required>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"/>
+
+    <div class="mt-5">
+        <label>
+            <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
+        </label>
+    </div>
+
+    <button class="bg-blue-500 text-white w-full mt-5 py-2 shadow-md rounded hover:bg-blue-400" type="submit">
+        Se connecter
+    </button>
+</form>
+</div>
+{% endblock %}
