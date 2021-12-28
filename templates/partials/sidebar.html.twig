@@ -1,4 +1,4 @@
-{% set uri = app.request.requestUri %}
+{% set uri = app.request.requestUri|split('/') %}
 
 <div>
     <div>
@@ -8,7 +8,7 @@
     <nav class="mt-20">
         <ul>
             <li>
-                <a href="{{ path('app_customer') }}" class="w-full block {% if uri == "/clients" %}nav-activ{% endif %}">
+                <a href="{{ path('app_customer') }}" class="w-full block {% if uri[1] == "clients" %}nav-activ{% endif %}">
                     <i class="fas fa-users"></i> Clients
                 </a>
             </li>
@@ -17,6 +17,6 @@
 
     <div class="grid grid-cols-2 gap-4 absolute bottom-2 text-gray-400">
         <a class="hover:text-blue-500" href="">Mon compte</a>
-        <a class="hover:text-blue-500" href="">Déconnexion</a>
+        <a class="hover:text-blue-500" href="{{ path('app_logout') }}">Déconnexion</a>
     </div>
 </div>

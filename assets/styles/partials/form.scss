@@ -1,0 +1,27 @@
+.form-theme {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  color: rgb(107 114 128);
+
+  div {
+    label {
+      display: none;
+    }
+
+    input, select, textarea {
+      background-color: #f3f3f3;
+      outline: none;
+      border-bottom: 2px gray solid;
+      padding: 4px;
+      height: 40px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+        &:focus {
+          border-bottom-color: #3b82f6;
+        }
+    }
+  }
+}

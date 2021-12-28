@@ -10,5 +10,60 @@
             <h3 class="ml-5">Mes clients</h3>
         </div>
     </header>
-    <div style="height: 1000px; width: 90%; background-color: #5eb5e0"></div>
+
+    <div class="mt-16">
+        <h2 class="mb-5 text-3xl text-blue-500 font-bold">Mes clients</h2>
+        <a href="{{ path('app_customer_create') }}" class="bg-blue-500 text-white px-3 py-2 rounded float-right shadow-md hover:bg-blue-600">Nouveau client</a><br><br><br>
+        <div class="bg-white p-10 rounded-md shadow-md text-gray-500 text-center">
+            <table class="w-full shadow-md leading-10">
+                <thead class="bg-blue-500 text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>Nom - Prénom</th>
+                        <th>E-mail</th>
+                        <th>Téléphone</th>
+                        <th>Mission(s)</th>
+                        <th>Facture(s)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set line = 0 %}
+                    {% for customer in customers %}
+                        <tr class="{% if line %}bg-gray-200{% endif %}">
+                            <td>
+                                {{ customer.id }}
+                            </td>
+                            <td>
+                                {{ customer.lastname }}
+                                {{ customer.firstname }}
+                            </td>
+                            <td>
+                                {{ customer.email }}
+                            </td>
+                            <td>
+                                {{ customer.phone }}
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                <button><i class="fas fa-ellipsis-h"></i></button>
+                            </td>
+                        </tr>
+                        {% set line = line ? 0 : 1 %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6">
+                                Pas de client
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

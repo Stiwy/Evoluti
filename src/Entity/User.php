@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'integer')]
     private $phone;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -57,6 +57,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'datetime')]
     private $insert_date;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $mobile;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $type;
 
     public function getId(): ?int
     {
@@ -256,6 +262,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInsertDate(\DateTimeInterface $insert_date): self
     {
         $this->insert_date = $insert_date;
+
+        return $this;
+    }
+
+    public function getMobile(): ?int
+    {
+        return $this->mobile;
+    }
+
+    public function setMobile(int $mobile): self
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

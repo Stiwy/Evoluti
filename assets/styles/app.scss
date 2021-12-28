@@ -8,13 +8,5 @@
 
 
 @import "pages/login";
-
-.sidebar-bg {
-  background-color: rgba(40, 40, 40, 0.7);
-}
-
-.nav-activ {
-  background-color: rgba(59, 130, 246, var(--tw-text-opacity));
-  padding: 5px 10px;
-  border-radius: 5px;
-}
+@import "partials/form";
+@import "partials/sidebar";

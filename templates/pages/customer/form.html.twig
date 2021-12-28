@@ -1,0 +1,52 @@
+{% extends 'layouts/is_login.html.twig' %}
+
+{% block title %}Mes clients{% endblock %}
+
+{% block content %}
+    <div class="mt-16">
+        <h2 class="mb-5 text-3xl text-blue-500 font-bold">Ajouter un nouveau client</h2>
+        <a href="{{ path('app_customer') }}" class="float-right px-3 py-2 bg-gray-500 shadow-md rounded-md text-white hover:bg-gray-400">Liste de client</a><br><br><br>
+        {{ form_start(form, { 'attr': {'class': 'form-theme'} }) }}
+            <div class="grid grid-cols-4 gap-2">
+                <h4 class="col-span-4 text-xl font-bold my-3">Identité du client :</h4>
+                <div class="col-span-2">
+                    {{ form_row(form.company) }}
+                </div>
+                <div class="col-start-1 col-span-2">
+                    {{ form_row(form.firstname) }}
+                </div>
+                <div class="col-span-2">
+                    {{ form_row(form.lastname) }}
+                </div>
+                <div class="col-span-2">
+                    {{ form_row(form.email) }}
+                </div>
+                <div>
+                    {{ form_row(form.phone) }}
+                </div>
+                <div>
+                    {{ form_row(form.mobile) }}
+                </div>
+                <h4 class="col-span-4 text-xl font-bold my-3">Adresse postal :</h4>
+                <div class="col-span-4">
+                    {{ form_row(form.address) }}
+                </div>
+                <div  class="col-span-4">
+                    {{ form_row(form.address_complement) }}
+                </div>
+                <div class="col-span-1">
+                    {{ form_row(form.zip_code) }}
+                </div>
+                <div  class="col-start-3 col-span-2">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col-span-4">
+                    {{ form_row(form.country) }}
+                </div>
+                <div class="col-start-4">
+                    {{ form_row(form.submit) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
