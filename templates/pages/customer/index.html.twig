@@ -3,14 +3,6 @@
 {% block title %}Mes clients{% endblock %}
 
 {% block content %}
-    <header class="-ml-10 grid grid-cols-2 px-5 py-3 fixed top-0 bg-gray-800 w-full text-white">
-        <div class="flex text-lg uppercase">
-            <span><i class="fas fa-arrow-circle-left text-xl"></i></span>
-            <span class="ml-3 text-xl"><i class="fas fa-arrow-circle-right"></i></span>
-            <h3 class="ml-5">Mes clients</h3>
-        </div>
-    </header>
-
     <div class="mt-16">
         <h2 class="mb-5 text-3xl text-blue-500 font-bold">Mes clients</h2>
         <a href="{{ path('app_customer_create') }}" class="bg-blue-500 text-white px-3 py-2 rounded float-right shadow-md hover:bg-blue-600">Nouveau client</a><br><br><br>
@@ -22,8 +14,6 @@
                         <th>Nom - Prénom</th>
                         <th>E-mail</th>
                         <th>Téléphone</th>
-                        <th>Mission(s)</th>
-                        <th>Facture(s)</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -42,16 +32,16 @@
                                 {{ customer.email }}
                             </td>
                             <td>
-                                {{ customer.phone }}
+                                {{ phone(customer.phone) }}
                             </td>
-                            <td>
-                                0
-                            </td>
-                            <td>
-                                0
-                            </td>
-                            <td>
-                                <button><i class="fas fa-ellipsis-h"></i></button>
+                            <td class="relative w-1/12">
+                                <button onclick="actionMenu('action-{{ customer.id }}')"><i class="fas fa-ellipsis-h"></i></button>
+                                <ul id="action-{{ customer.id }}" class="text-sm leading-7 text-left hidden z-10 absolute shadow-2xl w-full {% if line %}bg-gray-200{% else %}bg-white{% endif %}">
+                                    <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="{{ path('app_customer_show', {'id': customer.id}) }}">Détails</a></li>
+                                    <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="{{ path('app_customer_update', {'id': customer.id}) }}">Editer</a></li>
+                                    <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="">Facturer</a></li>
+                                    <li><span onclick="confirmDeledte('{{ customer.firstname }} {{ customer.lastname }}', '{{ customer.id }}')" class="hover:bg-red-500 hover:text-white text-red-500 w-full block pl-1">Supprimer</span></li>
+                                </ul>
                             </td>
                         </tr>
                         {% set line = line ? 0 : 1 %}
@@ -66,4 +56,18 @@
             </table>
         </div>
     </div>
+
+    <script>
+
+        function actionMenu(id) {
+            let elt = document.getElementById(id);
+            elt.classList.toggle('hidden');
+        }
+
+        function confirmDeledte(name, id) {
+            if (confirm('Souhaitez-vous vraiment supprimer ' + name + ' ? (cette action est irrévocable)')) {
+                document.location.href = '/clients/supprimer/' + id;
+            }
+        }
+    </script>
 {% endblock %}

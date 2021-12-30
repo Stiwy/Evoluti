@@ -8,8 +8,13 @@
     <nav class="mt-20">
         <ul>
             <li>
-                <a href="{{ path('app_customer') }}" class="w-full block {% if uri[1] == "clients" %}nav-activ{% endif %}">
+                <a href="{{ path('app_customer') }}" class="w-full block mb-2 hover:text-blue-500 py-2 px-5 {% if uri[1] == "clients" %}nav-activ{% endif %}">
                     <i class="fas fa-users"></i> Clients
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_mission') }}" class="w-full block mb-2 hover:text-blue-500 py-2 px-5 {% if uri[1] == "missions" %}nav-activ{% endif %}">
+                    <i class="fas fa-pencil-ruler"></i> Missions
                 </a>
             </li>
         </ul>

@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="mt-16">
-        <h2 class="mb-5 text-3xl text-blue-500 font-bold">Ajouter un nouveau client</h2>
+        <h2 class="mb-5 text-3xl text-blue-500 font-bold">{{ header|split('/')[1] }}</h2>
         <a href="{{ path('app_customer') }}" class="float-right px-3 py-2 bg-gray-500 shadow-md rounded-md text-white hover:bg-gray-400">Liste de client</a><br><br><br>
         {{ form_start(form, { 'attr': {'class': 'form-theme'} }) }}
             <div class="grid grid-cols-4 gap-2">

@@ -1,0 +1,53 @@
+{% extends 'layouts/is_login.html.twig' %}
+
+{% block title %}Mes mission{% endblock %}
+
+{% block content %}
+    <div class="mt-16">
+        <h2 class="mb-5 text-3xl text-blue-500 font-bold">{{ header|split('/')[1] }}</h2>
+        <a href="{{ path('app_mission') }}" class="float-right px-3 py-2 bg-gray-500 shadow-md rounded-md text-white hover:bg-gray-400">Liste des mission</a><br><br><br>
+        {{ form_start(form, { 'attr': {'class': 'form-theme'} }) }}
+            <div class="grid grid-cols-4 gap-2">
+                <h4 class="col-span-4 text-xl font-bold my-3">Information sur la mission :</h4>
+                <div class="col-span-4">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="col-span-4">
+                    {{ form_row(form.details) }}
+                </div>
+                <div class="col-span-1">
+                    {{ form_row(form.start_mission_date) }}
+                </div>
+                <div class="col-start-3 col-span-1">
+                    {{ form_row(form.status) }}
+                </div>
+
+                <h4 class="col-span-4 text-xl font-bold mt-3">Client :</h4>
+                <div class="col-span-2">
+                    {{ form_row(form.user) }}
+                </div>
+
+                <h4 class="col-span-4 text-xl font-bold mt-3">Taux horaire :</h4>
+                <em class="col-span-4 text-sm font-italic mb-3">Fixer un prix à l'heure ou la journée, à la missions, ect...</em>
+                <div class="col-span-2">
+                    {{ form_row(form.price) }}
+                </div>
+                <div class="col-span-2">
+                    {{ form_row(form.price_recurrency) }}
+                </div>
+
+                <h4 class="col-span-4 text-xl font-bold mt-3">Facturation :</h4>
+                <em class="col-span-4 text-sm font-italic mb-3">Fixer la récurrence de la facturation, et la date de la première facture</em>
+                <div class="col-span-2">
+                    {{ form_row(form.invoice_recurrency) }}
+                </div>
+                <div class="col-span-2">
+                    {{ form_row(form.invoice_deadline_date) }}
+                </div>
+                <div class="col-start-4">
+                    {{ form_row(form.submit) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

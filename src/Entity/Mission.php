@@ -31,6 +31,24 @@ class Mission
     #[ORM\Column(type: 'date')]
     private $start_mission_date;
 
+    #[ORM\Column(type: 'date', nullable: true)]
+    private $invoice_deadline_date;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private $invoice_last_date;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'missions')]
+    private $user;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $status;
+
+    #[ORM\Column(type: 'datetime')]
+    private $insert_date;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $updated_date;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +122,78 @@ class Mission
     public function setStartMissionDate(\DateTimeInterface $start_mission_date): self
     {
         $this->start_mission_date = $start_mission_date;
+
+        return $this;
+    }
+
+    public function getInvoiceDeadlineDate(): ?\DateTimeInterface
+    {
+        return $this->invoice_deadline_date;
+    }
+
+    public function setInvoiceDeadlineDate(?\DateTimeInterface $invoice_deadline_date): self
+    {
+        $this->invoice_deadline_date = $invoice_deadline_date;
+
+        return $this;
+    }
+
+    public function getInvoiceLastDate(): ?\DateTimeInterface
+    {
+        return $this->invoice_last_date;
+    }
+
+    public function setInvoiceLastDate(?\DateTimeInterface $invoice_last_date): self
+    {
+        $this->invoice_last_date = $invoice_last_date;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getInsertDate(): ?\DateTimeInterface
+    {
+        return $this->insert_date;
+    }
+
+    public function setInsertDate(\DateTimeInterface $insert_date): self
+    {
+        $this->insert_date = $insert_date;
+
+        return $this;
+    }
+
+    public function getUpdatedDate(): ?\DateTimeInterface
+    {
+        return $this->updated_date;
+    }
+
+    public function setUpdatedDate(?\DateTimeInterface $updated_date): self
+    {
+        $this->updated_date = $updated_date;
 
         return $this;
     }

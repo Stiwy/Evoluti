@@ -4,6 +4,9 @@
 
 .nav-activ {
   background-color: rgba(59, 130, 246, var(--tw-text-opacity));
-  padding: 5px 10px;
   border-radius: 5px;
+
+  &:hover {
+    color: white !important;
+  }
 }

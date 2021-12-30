@@ -1,0 +1,71 @@
+{% extends 'layouts/is_login.html.twig' %}
+
+{% block title %}Mes missions{% endblock %}
+
+{% block content %}
+    <div class="mt-16">
+        <h2 class="mb-5 text-3xl text-blue-500 font-bold">Mes missions</h2>
+        <a href="{{ path('app_mission_create') }}" class="bg-blue-500 text-white px-3 py-2 rounded float-right shadow-md hover:bg-blue-600">Nouvelle mission</a><br><br><br>
+        <div class="bg-white p-10 rounded-md shadow-md text-gray-500 text-center">
+            <table class="w-full shadow-md leading-10">
+                <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th>#</th>
+                    <th>Nom - Prénom</th>
+                    <th>E-mail</th>
+                    <th>Téléphone</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% set line = 0 %}
+                {% for mission in missions %}
+                    <tr class="{% if line %}bg-gray-200{% endif %}">
+                        <td>
+                            {{ mission.id }}
+                        </td>
+                        <td>
+                            {{ mission.title }}
+                        </td>
+                        <td>
+                            {{ mission.price }}
+                        </td>
+                        <td>
+                        </td>
+                        <td class="relative w-1/12">
+                            <button onclick="actionMenu('action-{{ mission.id }}')"><i class="fas fa-ellipsis-h"></i></button>
+                            <ul id="action-{{ mission.id }}" class="text-sm leading-7 text-left hidden z-10 absolute shadow-2xl w-full {% if line %}bg-gray-200{% else %}bg-white{% endif %}">
+                                <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="">Détails</a></li>
+                                <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="">Editer</a></li>
+                                <li><a class="hover:bg-blue-500 hover:text-white w-full block pl-1" href="">Facturer</a></li>
+                                <li><span onclick="confirmDeledte('{{ mission.title }}', '{{ mission.id }}')" class="hover:bg-red-500 hover:text-white text-red-500 w-full block pl-1">Supprimer</span></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% set line = line ? 0 : 1 %}
+                {% else %}
+                    <tr>
+                        <td colspan="6">
+                            Pas de missions
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        function actionMenu(id) {
+            let elt = document.getElementById(id);
+            elt.classList.toggle('hidden');
+        }
+
+        function confirmDeledte(name, id) {
+            if (confirm('Souhaitez-vous vraiment supprimer ' + name + ' ? (cette action est irrévocable)')) {
+                document.location.href = '/missions/supprimer/' + id;
+            }
+        }
+    </script>
+{% endblock %}
